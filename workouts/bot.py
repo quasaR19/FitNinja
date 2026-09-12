@@ -1,6 +1,7 @@
 # workouts/bot.py
 
 import os
+import django
 import logging
 from datetime import datetime
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -9,6 +10,9 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from asgiref.sync import sync_to_async
 from .models import Workout, Exercise, ExerciseLog, PersonalRecord
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fitninja_project.settings')
+django.setup()
 
 # Настройка логирования
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
